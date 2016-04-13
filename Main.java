@@ -5,27 +5,36 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
+
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter '1' to encrypt a message. " + "Enter '2' to decrpypt a message.");
 
-		int choice = sc.nextInt();
-		switch (choice) {
-		case (1):
-			System.out.println("Enter your message to encrypt: ");
-			String userString = sc.nextLine().toLowerCase();
+		String choice;
 
-			Encrypt.userMessage(userString);
-			break;
-		case (2):
-			String numbers = sc.nextLine();
+		do {
+			
+			System.out.println("Enter '1' to encrypt a message. \nEnter '2' to decrpypt a message.\n");
+			choice = sc.nextLine();
 
-			Decrypt.decryption(numbers);
-			break;
-		default:
-			System.out.println("Invalid input.");
-		}
+			switch (choice) {
+			case ("1"):
+				Encrypt.userMessage(sc);
+				break;
+			case ("2"):
+				Decrypt.decryption(sc);
+				break;
+			default:
+				System.out.println("Invalid input.");
+			}
 
+			System.out.println("\nDo you wish to continue? Y/N");
+			choice = sc.nextLine();
+
+		} while (choice.equalsIgnoreCase("y"));
+
+		System.out.println("Goodbye.");
+		
 		sc.close();
 
 	}
+
 }
